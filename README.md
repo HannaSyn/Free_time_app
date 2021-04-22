@@ -8,5 +8,6 @@ Made using [Bored API](https://www.boredapi.com/).
 
 1. Get a random activity.
 2. Find a random activity with a given type.
-3. Find a random activity with a given number of participants.
+3. Ask is user still bored and suggest to look for more.
 4. Find an activity by id (id generated randomly).
+5. Share an activity with friends.
