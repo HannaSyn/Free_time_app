@@ -65,5 +65,8 @@
     "**/*.{js,css,md,html}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "style.css": "^1.0.0"
   }
 }

@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 module.exports = {
   printWidth: 100,
   singleQuote: true,
