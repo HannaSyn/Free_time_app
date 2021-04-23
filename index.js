@@ -1,7 +1,3 @@
-if (module.hot) {
-  module.hot.accept();
-}
-
 const activity = {
   activity: 'Learn a new programming language',
   accessibility: 0.25,
