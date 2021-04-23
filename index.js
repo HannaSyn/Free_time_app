@@ -11,26 +11,46 @@ const activity = {
   key: '5881028',
 };
 
-const template = `
-<h1>Hello my friend!</h1>
-      <h2>Are you really bored?</h2>
-      <p>Let's see what we can do about it</p>
-      <select name="activity-type">
-        <option selected value="">Choose type</option>
-        <option value="education">Education</option>
-        <option value="recreational">Recreational</option>
-        <option value="social">Social</option>
-        <option value="diy">Do it youself</option>
-        <option value="charity">Charity</option>
-        <option value="cooking">Cooking</option>
-        <option value="relaxation">Relaxation</option>
-        <option value="music">Music</option>
-        <option value="busywork">Busywork</option>
-      </select>
-      <p>${activitiy.activity}</p>
-      <p>Are you still bored?</p></p>
-      <button>Find more</button>
-`;
+const types = [
+  'Education',
+  'Recreational',
+  'Social',
+  'DIY',
+  'Charity',
+  'Cooking',
+  'Relaxation',
+  'Music',
+  'Busywork',
+];
 
-const mainHtml = document.querySelector('main');
-mainHtml.innerHTML = template;
+window.renderApp = renderApp;
+
+renderApp();
+
+function renderApp() {
+  document.querySelector('main').innerHTML = App();
+}
+window.dataStore = {
+  currentType: '',
+};
+
+function App() {
+  return `
+  <h1>Hello my friend!</h1>
+        <h2>Are you really bored?</h2>
+        <p>Let's see what we can do about it</p>
+        ${filterByTypes()}
+        <p>${activity.activity}</p>
+        <p>Are you still bored?</p></p>
+        <button>Find more</button>
+  `;
+}
+
+function filterByTypes() {
+  return `
+  <select name="activity-type" onchange="window.dataStore.currentType = this.value;">
+        <option selected value="">Choose type</option>
+        ${types.map(type => `<option value="${type}">${type}</option>`).join('')}
+      </select>
+  `;
+}
