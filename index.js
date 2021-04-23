@@ -108,7 +108,7 @@ function App() {
     <h2>Are you really bored?</h2>
     <p>Let's see what we can do about it</p>
     ${setType()}
-    <p>${dataStore.currentType ? getActivityByType() : getRandomActivity()}</p>
+    <p class="activity">${dataStore.currentType ? getActivityByType() : getRandomActivity()}</p>
     <p>Are you still bored?</p></p>
     <button onClick="getRandomActivity(); renderApp()">Find more</button>
   `;
