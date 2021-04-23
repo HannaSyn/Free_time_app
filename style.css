@@ -1,5 +1,5 @@
 main {
-  width: 30%;
+  width: 70%;
   margin: 30px auto;
   text-align: center;
 }
@@ -13,4 +13,10 @@ main {
 select,
 button {
   width: 100%;
+}
+
+@media (min-width: 1040px) {
+  main {
+    width: 30%;
+  }
 }
