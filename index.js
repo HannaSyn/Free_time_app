@@ -150,7 +150,7 @@ function getRandomActivity() {
 }
 
 function renderApp() {
-  document.querySelector('main').innerHTML = App();
+  document.querySelector('#app').innerHTML = App();
 }
 
 renderApp();
