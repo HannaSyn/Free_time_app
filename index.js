@@ -15,7 +15,7 @@ const dataStore = {
   currentType: '',
 };
 
-const url = 'http://www.boredapi.com/api/activity/';
+const url = 'https://www.boredapi.com/api/activity/';
 let data = {};
 
 async function getData() {
@@ -27,7 +27,7 @@ async function getData() {
 
 async function getDataByType() {
   const response = await fetch(
-    `http://www.boredapi.com/api/activity?type=${dataStore.currentType.toLowerCase()}`,
+    `https://www.boredapi.com/api/activity?type=${dataStore.currentType.toLowerCase()}`,
   );
   data = await response.json();
   return `${data.activity}`;
