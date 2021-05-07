@@ -12,34 +12,41 @@ const types = [
   'Busywork',
 ];
 
-const url = 'http://www.boredapi.com/api/activity/';
-let data = {};
-
-function getData() {
-  return fetch(url)
-    .then(response => response.json())
-    .then(data => ({ data }))
-    .finally(renderApp());
-}
-
 const dataStore = {
   currentActivity: {},
   currentType: '',
 };
 
+const url = 'http://www.boredapi.com/api/activity/';
+const typeUrl = `http://www.boredapi.com/api/activity?type=${dataStore.currentType.toLowerCase()}`;
+let data = {};
+
+async function getData() {
+  const response = await fetch(url);
+  data = await response.json();
+  dataStore.currentType = data.type;
+  return `${data.activity}`;
+}
+
+async function getDataByType() {
+  const response = await fetch(typeUrl);
+  data = await response.json();
+  return `${data.activity}`;
+}
+
 window.renderApp = renderApp;
-window.getRandomActivity = getRandomActivity;
+window.getData = getData;
 window.dataStore = dataStore;
 
-function App() {
+async function App() {
   return `
     <h1>Hello my friend!</h1>
     <h2>Are you really bored?</h2>
     <p>Let's see what we can do about it</p>
     ${setType()}
-    <p class="activity">${dataStore.currentType ? getActivityByType() : getRandomActivity()}</p>
+    <p class="activity">${dataStore.currentType ? await getDataByType() : await getData()}</p>
     <p>Are you still bored?</p></p>
-    <button onClick="getRandomActivity(); renderApp()">Find more</button>
+    <button onClick="getData(); renderApp()">Find more</button>
   `;
 }
 
@@ -58,31 +65,10 @@ function setType() {
   `;
 }
 
-function getActivityByType() {
-  dataStore.currentActivity = activities.filter(
-    item => item.type === dataStore.currentType.toLowerCase(),
-  )[0];
-  dataStore.currentType = dataStore.currentActivity.type;
-
-  return `${dataStore.currentActivity.activity}`;
-}
-
-function getRandomId(min = 0, max = 8) {
-  return Math.ceil(Math.random() * (max - min) + min);
-}
-
-function getRandomActivity() {
-  dataStore.currentActivity = data;
-  dataStore.currentType = dataStore.currentActivity.type;
-
-  return `${dataStore.currentActivity.activity}`;
-}
-
-function renderApp() {
-  document.querySelector('#app').innerHTML = App();
+async function renderApp() {
+  document.querySelector('#app').innerHTML = await App();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  getData();
-  // renderApp();
+  renderApp();
 });
