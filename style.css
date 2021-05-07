@@ -1,4 +1,4 @@
-main {
+#app {
   width: 70%;
   margin: 30px auto;
   text-align: center;
@@ -16,7 +16,7 @@ button {
 }
 
 @media (min-width: 1040px) {
-  main {
+  #app {
     width: 30%;
   }
 }

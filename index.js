@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-console */
 const types = [
   'Education',
   'Recreational',
@@ -18,7 +16,6 @@ const dataStore = {
 };
 
 const url = 'http://www.boredapi.com/api/activity/';
-const typeUrl = `http://www.boredapi.com/api/activity?type=${dataStore.currentType.toLowerCase()}`;
 let data = {};
 
 async function getData() {
@@ -29,7 +26,9 @@ async function getData() {
 }
 
 async function getDataByType() {
-  const response = await fetch(typeUrl);
+  const response = await fetch(
+    `http://www.boredapi.com/api/activity?type=${dataStore.currentType.toLowerCase()}`,
+  );
   data = await response.json();
   return `${data.activity}`;
 }
