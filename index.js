@@ -67,6 +67,4 @@ async function renderApp() {
   document.querySelector('#app').innerHTML = await App();
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  renderApp();
-});
+renderApp();
