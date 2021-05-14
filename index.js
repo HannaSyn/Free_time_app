@@ -11,7 +11,6 @@ const types = [
 ];
 
 const dataStore = {
-  currentActivity: {},
   currentType: '',
 };
 
