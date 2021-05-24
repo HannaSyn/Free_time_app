@@ -12,50 +12,60 @@ const types = [
 
 const dataStore = {
   currentType: '',
+  currentActivity: {},
 };
 
 const url = 'https://www.boredapi.com/api/activity/';
-let data = {};
 
-async function getData() {
-  const response = await fetch(url);
-  data = await response.json();
-  dataStore.currentType = data.type;
-  return `${data.activity}`;
+function getData() {
+  fetch(dataStore.currentType ? `${url}?type=${dataStore.currentType.toLowerCase()}` : url)
+    .then(response => response.json())
+    .then(data => {
+      dataStore.currentActivity = data;
+      dataStore.currentType = data.type;
+      window.renderApp();
+    });
 }
 
-async function getDataByType() {
-  const response = await fetch(
-    `https://www.boredapi.com/api/activity?type=${dataStore.currentType.toLowerCase()}`,
-  );
-  data = await response.json();
-  return `${data.activity}`;
+function renderActivity() {
+  if (Object.keys(dataStore.currentActivity).length) {
+    return `${dataStore.currentActivity.activity}`;
+  } else {
+    getData();
+    return `${dataStore.currentActivity.activity}`;
+  }
+}
+
+function getNewActivity() {
+  dataStore.currentActivity = {};
+  renderActivity();
 }
 
 window.renderApp = renderApp;
 window.getData = getData;
 window.dataStore = dataStore;
+window.getNewActivity = getNewActivity;
 
-async function App() {
+function App() {
   return `
     <h1>Hello my friend!</h1>
     <h2>Are you really bored?</h2>
     <p>Let's see what we can do about it</p>
+    <button onClick="window.dataStore.currentType = ''; window.getNewActivity()">Find random</button>
     ${setType()}
-    <p class="activity">${dataStore.currentType ? await getDataByType() : await getData()}</p>
+    <p class="activity">${renderActivity()}</p>
     <p>Are you still bored?</p></p>
-    <button onClick="getData(); renderApp()">Find more</button>
+    <button onClick="window.getNewActivity()">Find more</button>
   `;
 }
 
 function setType() {
   return `
-    <select name="activity-type" onchange="window.dataStore.currentType = this.value; renderApp()">
-      <option value="">Choose type</option>
+    <select name="activity-type" onchange="window.dataStore.currentType = this.value; window.getNewActivity()">
       ${types
         .map(
           type => `<option value="${type}"
-          ${window.dataStore.currentType === type ? 'selected' : ''}
+          ${window.dataStore.currentType === type.toLowerCase() ? 'selected' : ''}
           >${type}</option>`,
         )
         .join('')}
@@ -63,8 +73,8 @@ function setType() {
   `;
 }
 
-async function renderApp() {
-  document.querySelector('#app').innerHTML = await App();
+function renderApp() {
+  document.querySelector('#app').innerHTML = App();
 }
 
 renderApp();
