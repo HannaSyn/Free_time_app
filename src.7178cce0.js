@@ -2,19 +2,19 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;const e={currentType:"",currentActivity:{}};var t=e;exports.default=t;
 },{}],"LVjg":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=e;const t="https://www.boredapi.com/api/activity/";function e(){fetch(window.dataStore.currentType?`${t}?type=${window.dataStore.currentType.toLowerCase()}`:t).then(t=>t.json()).then(t=>{window.dataStore.currentActivity=t,window.dataStore.currentType=t.type,window.renderApp()})}
-},{}],"DUP7":[function(require,module,exports) {
+},{}],"NkZW":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=r;var t=e(require("../data/dataActivity"));function e(t){return t&&t.__esModule?t:{default:t}}function r(){return Object.keys(window.dataStore.currentActivity).length?`${window.dataStore.currentActivity.activity}`:((0,t.default)(),`${window.dataStore.currentActivity.activity}`)}
 },{"../data/dataActivity":"LVjg"}],"ozRe":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=r;var e=t(require("./renderActivity"));function t(e){return e&&e.__esModule?e:{default:e}}function r(){window.dataStore.currentActivity={},(0,e.default)()}
-},{"./renderActivity":"DUP7"}],"n21/":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=r;var e=t(require("./RenderActivity"));function t(e){return e&&e.__esModule?e:{default:e}}function r(){window.dataStore.currentActivity={},(0,e.default)()}
+},{"./RenderActivity":"NkZW"}],"iWoG":[function(require,module,exports) {
+"use strict";let e,t;function n(n,o){n&&(e=n),o&&(t=o),document.getElementById(t).innerHTML=`${e()}`}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=n;
+},{}],"n21B":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;const e=["Education","Recreational","Social","DIY","Charity","Cooking","Relaxation","Music","Busywork"];var o=e;exports.default=o;
-},{}],"75gK":[function(require,module,exports) {
+},{}],"zYAD":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=n;var e=t(require("../data/types"));function t(e){return e&&e.__esModule?e:{default:e}}function n(){return`\n    <select name="activity-type" onchange="window.dataStore.currentType = this.value; window.getNewActivity()">\n      ${e.default.map(e=>`<option value="${e}"\n          ${window.dataStore.currentType===e.toLowerCase()?"selected":""}\n          >${e}</option>`).join("")}\n    </select>\n  `}
-},{"../data/types":"n21/"}],"le+d":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=o;var e=n(require("../components/setType")),t=n(require("../components/renderActivity"));function n(e){return e&&e.__esModule?e:{default:e}}function o(){return`\n    <h1>Hello my friend!</h1>\n    <h2>Are you really bored?</h2>\n    <p>Let's see what we can do about it</p>\n    <button onClick="window.dataStore.currentType = ''; window.getNewActivity()">Find random activity</button>\n    ${(0,e.default)()}\n    <p class="activity">${(0,t.default)()}</p>\n    <p>Are you still bored?</p></p>\n    <button onClick="window.getNewActivity()">Find more ${window.dataStore.currentType}</button>\n  `}
-},{"../components/setType":"75gK","../components/renderActivity":"DUP7"}],"iWoG":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=r;var e=t(require("../components/App"));function t(e){return e&&e.__esModule?e:{default:e}}function r(){document.querySelector("#app").innerHTML=`${(0,e.default)()}`}
-},{"../components/App":"le+d"}],"Focm":[function(require,module,exports) {
-"use strict";var e=d(require("./data/dataStore")),t=d(require("./components/GetNewActivity")),r=d(require("./framework/render"));function d(e){return e&&e.__esModule?e:{default:e}}window.renderApp=r.default,window.dataStore=e.default,window.getNewActivity=t.default,(0,r.default)();
-},{"./data/dataStore":"hy1s","./components/GetNewActivity":"ozRe","./framework/render":"iWoG"}]},{},["Focm"], null)
-//# sourceMappingURL=src.38e0e423.js.map
+},{"../data/types":"n21B"}],"leDv":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=r;var e=n(require("./SetType")),t=n(require("./RenderActivity"));function n(e){return e&&e.__esModule?e:{default:e}}function r(){return`\n    <h1>Hello my friend!</h1>\n    <h2>Are you really bored?</h2>\n    <p>Let's see what we can do about it</p>\n    <button onClick="window.dataStore.currentType = ''; window.getNewActivity()">Find random activity</button>\n    ${(0,e.default)()}\n    <p class="activity">${(0,t.default)()}</p>\n    <p>Are you still bored?</p></p>\n    <button onClick="window.getNewActivity()">Find more ${window.dataStore.currentType}</button>\n  `}
+},{"./SetType":"zYAD","./RenderActivity":"NkZW"}],"Focm":[function(require,module,exports) {
+"use strict";var e=d(require("./data/dataStore")),t=d(require("./components/GetNewActivity")),r=d(require("./framework/render")),a=d(require("./components/App"));function d(e){return e&&e.__esModule?e:{default:e}}window.renderApp=r.default,window.dataStore=e.default,window.getNewActivity=t.default,(0,r.default)(a.default,"app");
+},{"./data/dataStore":"hy1s","./components/GetNewActivity":"ozRe","./framework/render":"iWoG","./components/App":"leDv"}]},{},["Focm"], null)
+//# sourceMappingURL=src.7178cce0.js.map
