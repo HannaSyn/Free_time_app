@@ -28,6 +28,8 @@
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "@babel/eslint-parser": "^7.13.14",
+    "@babel/plugin-syntax-jsx": "^7.12.13",
+    "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@babel/preset-env": "^7.13.12",
     "autoprefixer": "^10.2.5",
     "babel-preset-env": "^1.7.0",
@@ -36,13 +38,23 @@
     "eslint-plugin-prettier": "^3.3.1",
     "gh-pages": "^3.1.0",
     "lint-staged": "^10.5.4",
-    "parcel-bundler": "^1.12.5",
+    "parcel-bundler": "^1.10.3",
     "postcss-modules": "^4.0.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.2.1",
     "shx": "^0.3.3"
   },
   "babel": {
+    "plugins": [
+      [
+        "@babel/plugin-transform-react-jsx",
+        {
+          "pragma": "createElement",
+          "pragmaFRag": "createFragment",
+          "throwIfNamespace": "true"
+        }
+      ]
+    ],
     "presets": [
       [
         "env",

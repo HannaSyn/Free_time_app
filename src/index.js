@@ -7,4 +7,4 @@ window.renderApp = renderApp;
 window.dataStore = dataStore;
 window.getNewActivity = getNewActivity;
 
-renderApp(App, 'app');
+renderApp(App, document.getElementById('app'));

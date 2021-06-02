@@ -1,10 +1,13 @@
-import getData from '../data/dataActivity';
+/** @jsx createElement */
+/** @jsxFrag createFragment */
+import { createElement, createFragment } from '../framework/element';
+import GetData from './GetData';
 
-export default function renderActivity() {
+export default function RenderActivity() {
   if (Object.keys(window.dataStore.currentActivity).length) {
-    return `${window.dataStore.currentActivity.activity}`;
+    return <p Class="activity">{window.dataStore.currentActivity.activity}</p>;
   } else {
-    getData();
-    return `${window.dataStore.currentActivity.activity}`;
+    GetData();
+    return <p Class="activity">{window.dataStore.currentActivity.activity}</p>;
   }
 }

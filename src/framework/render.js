@@ -1,7 +1,20 @@
+/** @jsx createElement */
+/** @jsxFrag createFragment */
+import { createElement, createFragment } from '../framework/element';
+
 let Component, Target;
 
-export default function renderApp(componentFunction, targetElementId) {
+/**
+ * Renders a component and attaches it to the target DOM element
+ * @param componentFunction - Component function or class
+ * @param target - DOM element to attach component to
+ */
+
+function renderApp(componentFunction = null, target = null) {
   if (componentFunction) Component = componentFunction;
-  if (targetElementId) Target = targetElementId;
-  document.getElementById(Target).innerHTML = `${Component()}`;
+  if (target) Target = target;
+  Target.innerHTML = '';
+  Target.appendChild(<Component />);
 }
+
+export default renderApp;
