@@ -1,6 +1,6 @@
 const url = 'https://www.boredapi.com/api/activity/';
 
-export default function GetData() {
+export default function getData() {
   fetch(
     window.dataStore.currentType
       ? `${url}?type=${window.dataStore.currentType.toLowerCase()}`
