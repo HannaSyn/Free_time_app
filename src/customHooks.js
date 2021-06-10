@@ -1,4 +1,4 @@
-import { useEffect, useState } from './framework';
+import { useEffect, useState } from 'react';
 import getData from './data/getData';
 
 export const useActivity = () => {
@@ -18,7 +18,7 @@ export const useActivity = () => {
         setCurrentActivity(data);
         setCurrentType(data.type);
       })
-      .catch(error)
+      .catch(() => setError(error))
       .finally(() => setIsLoaded(true));
   }, [repeatActivity]);
 

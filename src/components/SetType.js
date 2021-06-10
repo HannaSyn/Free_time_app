@@ -1,6 +1,4 @@
-/** @jsx createElement */
-/** @jsxFrag createFragment */
-import { createElement, createFragment } from '../framework/element';
+import React from 'react';
 import types from '../data/types';
 
 export default function SetType({ currentType, isLoaded, onChange }) {
@@ -9,12 +7,16 @@ export default function SetType({ currentType, isLoaded, onChange }) {
       {types.map(type => {
         if (currentType === type) {
           return (
-            <option value={type} selected>
+            <option key={type} value={type} selected>
               {type}
             </option>
           );
         } else {
-          return <option value={type}>{type}</option>;
+          return (
+            <option key={type} value={type}>
+              {type}
+            </option>
+          );
         }
       })}
     </select>

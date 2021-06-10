@@ -1,6 +1,4 @@
-/** @jsx createElement */
-/** @jsxFrag createFragment */
-import { createElement, createFragment } from '../framework';
+import React from 'react';
 import { useActivity } from '../customHooks';
 import SetType from './SetType';
 import RenderActivity from './RenderActivity';

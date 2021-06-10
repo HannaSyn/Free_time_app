@@ -1,11 +1,9 @@
-/** @jsx createElement */
-/** @jsxFrag createFragment */
-import { createElement, createFragment } from '../framework/element';
+import React from 'react';
 
 export default function RenderActivity({ currentActivity, isLoaded }) {
   if (!isLoaded) {
-    return <p Class="loading">...</p>;
+    return <p className="loading">...</p>;
   }
 
-  return <p Class="activity">{currentActivity.activity}</p>;
+  return <p className="activity">{currentActivity.activity}</p>;
 }
