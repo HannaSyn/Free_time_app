@@ -1,13 +1,13 @@
 const types = [
-  'Education',
-  'Recreational',
-  'Social',
-  'DIY',
-  'Charity',
-  'Cooking',
-  'Relaxation',
-  'Music',
-  'Busywork',
+  'education',
+  'recreational',
+  'social',
+  'diy',
+  'charity',
+  'cooking',
+  'relaxation',
+  'music',
+  'busywork',
 ];
 
 export default types;

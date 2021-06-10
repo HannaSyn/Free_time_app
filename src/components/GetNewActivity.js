@@ -1,6 +1,6 @@
-import renderActivity from './RenderActivity';
+import RenderActivity from './RenderActivity';
 
-export default function GetNewActivity() {
-  window.dataStore.currentActivity = {};
-  renderActivity();
+export default function GetNewActivity(сurrentActivity) {
+  сurrentActivity = {};
+  RenderActivity(сurrentActivity);
 }

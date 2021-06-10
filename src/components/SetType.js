@@ -2,19 +2,12 @@
 /** @jsxFrag createFragment */
 import { createElement, createFragment } from '../framework/element';
 import types from '../data/types';
-import getNewActivity from './GetNewActivity';
 
-export default function SetType() {
+export default function SetType({ currentType, isLoaded, onChange }) {
   return (
-    <select
-      name="activity-type"
-      onChange={e => {
-        window.dataStore.currentType = e.target.value;
-        getNewActivity();
-      }}
-    >
+    <select name="activity-type" onChange={e => onChange(e.target.value)}>
       {types.map(type => {
-        if (window.dataStore.currentType === type.toLowerCase()) {
+        if (currentType === type) {
           return (
             <option value={type} selected>
               {type}

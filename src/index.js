@@ -1,10 +1,8 @@
-import dataStore from './data/dataStore';
-import getNewActivity from './components/GetNewActivity';
-import renderApp from './framework/render';
+import { render } from './framework/';
 import App from './components/App';
 
-window.renderApp = renderApp;
-window.dataStore = dataStore;
-window.getNewActivity = getNewActivity;
+if (module.hot) {
+  module.hot.accept();
+}
 
-renderApp(App, document.getElementById('app'));
+render(App, document.getElementById('app'));
