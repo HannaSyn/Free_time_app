@@ -4,7 +4,6 @@ import { createElement, createFragment } from '../framework';
 import { useActivity } from '../customHooks';
 import SetType from './SetType';
 import RenderActivity from './RenderActivity';
-import types from '../data/types';
 
 export default function App() {
   let {
