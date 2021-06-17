@@ -2,21 +2,21 @@ import { useEffect, useState } from 'react';
 import getData from './data/getData';
 
 export const useActivity = () => {
-  let [currentType, setCurrentType] = useState('');
+  const [currentType, setCurrentType] = useState('');
   const [repeatActivity, setRepeatActivity] = useState(false);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  let [currentActivity, setCurrentActivity] = useState({});
+  const [currentActivity, setCurrentActivity] = useState({});
 
   useEffect(() => {
     getData(currentType)
       .then(data => {
-        const { message, code } = data;
+        const { message, code, type } = data;
 
         if (code !== '200' && message) throw Error(message);
 
         setCurrentActivity(data);
-        setCurrentType(data.type);
+        setCurrentType(type);
       })
       .catch(() => setError(error))
       .finally(() => setIsLoaded(true));
