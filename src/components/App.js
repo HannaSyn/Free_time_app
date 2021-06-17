@@ -19,7 +19,7 @@ export default function App() {
       <h2>Are you really bored?</h2>
       <p>Let's see what we can do about it</p>
       <button
-        onClick={() => {
+        onClick={() => { // TODO move to handler (const handleClick = () => {...})
           setCurrentType('');
           setRepeatActivity(!repeatActivity);
         }}
@@ -29,7 +29,7 @@ export default function App() {
       <SetType
         currentType={currentType}
         isLoaded={isLoaded}
-        onChange={type => {
+        onChange={type => { // TODO move to handler
           setCurrentType(type);
           setRepeatActivity(!repeatActivity);
         }}
@@ -38,7 +38,7 @@ export default function App() {
       <p>Are you still bored?</p>
       <button
         onClick={() => {
-          setRepeatActivity(!repeatActivity);
+          setRepeatActivity(!repeatActivity); // TODO move to handler
         }}
       >
         Find more {currentType}
