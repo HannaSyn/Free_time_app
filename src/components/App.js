@@ -3,6 +3,14 @@ import { useActivity } from '../customHooks';
 import SetType from './SetType';
 import RenderActivity from './RenderActivity';
 
+const handleClick = (repeatActivity, type = null) => {
+  if (type !== null) {
+    setCurrentType(type);
+  }
+  
+  setRepeatActivity(!repeatActivity);
+};
+
 export default function App() {
   let {
     currentActivity,
@@ -19,27 +27,19 @@ export default function App() {
       <h2>Are you really bored?</h2>
       <p>Let's see what we can do about it</p>
       <button
-        onClick={() => { // TODO move to handler (const handleClick = () => {...})
-          setCurrentType('');
-          setRepeatActivity(!repeatActivity);
-        }}
+        onClick=handleClick(repeatActivity, '')
       >
         Find random activity
       </button>
       <SetType
         currentType={currentType}
-        isLoaded={isLoaded}
-        onChange={type => { // TODO move to handler
-          setCurrentType(type);
-          setRepeatActivity(!repeatActivity);
-        }}
+        repeatActivity={repeatActivity}
+        onChange=handleClick(repeatActivity, type)
       />
       <RenderActivity currentActivity={currentActivity} isLoaded={isLoaded} />
       <p>Are you still bored?</p>
       <button
-        onClick={() => {
-          setRepeatActivity(!repeatActivity); // TODO move to handler
-        }}
+        onClick=handleClick(repeatActivity)
       >
         Find more {currentType}
       </button>
