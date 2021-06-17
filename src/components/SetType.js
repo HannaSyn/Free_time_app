@@ -1,9 +1,9 @@
 import React from 'react';
 import types from '../data/types';
 
-export default function SetType({ currentType, isLoaded, onChange }) { // TODO YAGNI
+export default function SetType({ currentType, repeatActivity, onChange }) {
   return (
-    <select name="activity-type" onChange={e => onChange(e.target.value)}> {/* TODO move to handler */}
+    <select name="activity-type" onChange={e => onChange(repeatActivity, e.target.value)}>
       {types.map(type => {
         if (currentType === type) {
           return (
@@ -11,13 +11,13 @@ export default function SetType({ currentType, isLoaded, onChange }) { // TODO Y
               {type}
             </option>
           );
-        } else {   // TODO redundant else
-          return (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          );
         }
+        
+        return (
+          <option key={type} value={type}>
+            {type}
+          </option>
+        );
       })}
     </select>
   );
